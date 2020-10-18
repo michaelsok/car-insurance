@@ -2,6 +2,7 @@
     "project": null,
     "data": "data",
     "models": "models",
+    "results": "results",
     "logs": "logs",
     "keyname": "kaggle.json"
 }
