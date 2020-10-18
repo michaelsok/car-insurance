@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.pipeline import Pipeline
 
-from carinsurance.domain.preprocessing.transformers import DurationTransformer, Scaler
+from carinsurance.domain.preprocessing.transformers import DurationTransformer, Scaler, TargetSplitter, MedianImputer
 from carinsurance.infrastructure.preprocessing.transformers import (ColumnsRemover, NullValuesFiller,
     ModalitiesReplacement, DatetimeConverter, Dummifier, Indexer, ColumnsSorter
 )
@@ -28,6 +28,7 @@ def get_pipeline():
         ('NullValuesFiller', NullValuesFiller(columns=['Communication', 'Outcome'], value='unknown')),
         ('JobAggregator', ModalitiesReplacement(column='Job', replacement=JOB_REPLACEMENT)),
         ('EducationEncoding', ModalitiesReplacement(column='Education', replacement=EDUCATION_REPLACEMENT)),
+        ('EducationImputer', MedianImputer(columns=['Education'])),
         ('DatetimeConverter', DatetimeConverter(columns=['CallStart', 'CallEnd'])),
         ('CallDuration', DurationTransformer(start='CallStart', end='CallEnd')),
         ('TimeColumnsRemover', ColumnsRemover(columns=['CallStart', 'CallEnd', 'LastContactMonth', 'LastContactDay'])),

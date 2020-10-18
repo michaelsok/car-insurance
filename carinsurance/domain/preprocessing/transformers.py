@@ -61,3 +61,19 @@ class Scaler(Transformer):
         data = data.copy()
         values = self.scaler.transform(data)
         return pd.DataFrame(values, columns=data.columns, index=data.index)
+
+
+class MedianImputer(Transformer):
+    def __init__(self, columns):
+        self.columns = columns
+        self.medians = None
+
+    def fit(self, data):
+        data = data.copy()
+        self.medians = {c: data[c].median().astype(int) for c in self.columns}
+        return self
+
+    def transform(self, data):
+        data = data.copy()
+        data.fillna(self.medians, inplace=True)
+        return data

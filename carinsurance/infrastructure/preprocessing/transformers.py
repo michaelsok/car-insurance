@@ -9,7 +9,7 @@ class Indexer(Transformer):
 
     def transform(self, data):
         data = data.copy()
-        data.set_index(self.column)
+        data.set_index(self.column, inplace=True)
         return data
 
 
