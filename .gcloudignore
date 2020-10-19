@@ -1,0 +1,9 @@
+.venv
+data
+logs
+results
+.gitignore
+activate.sh
+init.sh
+README.md
+requirements.dev.txt

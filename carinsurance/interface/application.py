@@ -5,7 +5,7 @@ import logging
 
 import numpy as np
 import pandas as pd
-from flask import Flask, request, redirect, url_for, flash, jsonify
+from flask import Flask, request
 
 from carinsurance.config import CONFIG
 
