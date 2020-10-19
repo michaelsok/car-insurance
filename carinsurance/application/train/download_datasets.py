@@ -15,7 +15,7 @@ def download_datasets(config, logger):
         os.makedirs(raw_path, exist_ok=True)
 
     dataset = CarInsuranceDataset(logger=logger)
-    dataset.download(filepath=raw_path)
+    dataset.download(dirpath=raw_path)
     dataset.unzip(filepath=os.path.join(raw_path, dataset.zipname), delete=True)
     dataset.rename_files_in(raw_path)
 
