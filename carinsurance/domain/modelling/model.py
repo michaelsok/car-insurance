@@ -32,13 +32,14 @@ class Model(object):
             return self.model.predict_proba(features, **predictargs)
         return self.model.predict(features, **predictargs)
 
-    def compute_report_using(self, features, target, threshold=.5):
+    def compute_report_using(self, features, target, threshold=.5, name=None):
+        name = name or 'report.txt'
         predictions = (self.predict(features)[:, 1] > threshold).astype(int)
         report = classification_report(target, predictions)
 
         self.logger.info(report)
         if self.results_path is not None:
-            with open(os.path.join(self.results_path, 'report.txt'), 'w') as f:
+            with open(os.path.join(self.results_path, name), 'w') as f:
                 f.write(report)
 
     def save(self, models_path, name=None):
