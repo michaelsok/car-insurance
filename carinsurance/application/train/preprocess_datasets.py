@@ -50,7 +50,7 @@ def preprocess_datasets(config, logger):
     y_validation.to_csv(os.path.join(clean_path, 'y_validation.csv'), index=False)
 
     logger.info('Saving pipeline...')
-    with open(os.path.join(models_path, 'preprocessing_pipeline.pkl'), 'wb') as f:
+    with open(os.path.join(models_path, 'pipeline.pkl'), 'wb') as f:
         pickle.dump(pipeline, f)
 
     logger.info('Preprocessing done!')
