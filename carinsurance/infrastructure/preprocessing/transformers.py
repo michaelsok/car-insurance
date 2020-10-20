@@ -93,7 +93,7 @@ class ModalitiesReplacement(Transformer):
     ----------
     column : str
         column on which modalities must be replaced
-    replacement : dict, optional, default is dict()
+    replacement : dict
         replacement pattern where keys are original modalities and
         value is replacement
 
@@ -153,7 +153,7 @@ class Dummifier(Transformer):
 
         Returns
         -------
-        self : object
+        object
             Dummifier instance fitted
 
         '''
@@ -200,7 +200,7 @@ class NullValuesFiller(Transformer):
     ----------
     columns : list-like of str
         columns on which null values will be replaced
-    value : any, optional, default is 0
+    value : any
         value used in place of null values
 
     '''
@@ -275,34 +275,30 @@ class ColumnsSorter(Transformer):
     def __init__(self):
         self.columns = None
 
-    def fit(self, data, y=None):
+    def fit(self, data):
         '''Get columns order from data
 
         Parameters
         ----------
         data : pd.DataFrame
             data for which columns order will be memorized
-        y : any, optional, default is None
-            argument used for compatibility after TargetSplitter, ignored
 
         Returns
         -------
-        self : object
+        object
             ColumnsSorter instance fitted
 
         '''
         self.columns = data.columns
         return self
 
-    def transform(self, data, y=None):
+    def transform(self, data):
         '''Sort data based on columns order during fitting
 
         Parameters
         ----------
         data : pd.DataFrame
             data for which columns muste be sorted
-        y : any, optional, default is None
-            argument used for compatibility after TargetSplitter, ignored
 
         Returns
         -------
@@ -314,4 +310,4 @@ class ColumnsSorter(Transformer):
 
         if y is None:
             return data[self.columns]
-        return data[self.columns], y
+        return data[self.columns]
