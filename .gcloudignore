@@ -1,9 +1,23 @@
+# Virtual Environment
 .venv
+activate.sh
+init.sh
+
+# Data unused during serving
 data
 logs
 results
+
+# Git files
 .gitignore
-activate.sh
-init.sh
+
+# Cache files
+*.pyc
+*.DS_Store
+
+# Unused documentation
 README.md
+
+# Unused requirements
+requirements.doc.txt
 requirements.dev.txt
