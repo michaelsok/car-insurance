@@ -6,7 +6,7 @@ A company has to call customers in order to make them subscribe to their service
 
 This project is a template for addressing this simple business problem with a simple form calling a REST API using a simple ML model to predict the subscription.
 
-This project is also documented and available online (the [form](https://form-dot-blog-msok-ml-290723.ew.r.appspot.com) and the [documentation](https://doc-dot-blog-msok-ml-290723.ew.r.appspot.com).
+This project is also documented and available online (the [form](https://form-dot-blog-msok-ml-290723.ew.r.appspot.com) and the [documentation](https://doc-dot-blog-msok-ml-290723.ew.r.appspot.com)).
 
 The API route is located at https://blog-msok-ml-290723.ew.r.appspot.com/api/.
 
