@@ -56,8 +56,8 @@ def get_predictions(data, pipeline, model, threshold, logger):
 
     '''
     for c in data.columns:
-        has_missing = data[c].replace({'': np.nan}).isna().any()
-        if has_missing and c not in ('Education', 'Communication', 'Outcome'):
+        has_missing = data[c].astype(object).replace({'': np.nan}).isna().any()
+        if has_missing and (c not in ('Job', 'Education', 'Communication', 'Outcome')):
             raise MissingValueError(f'NaN value was found in {c}')
 
     try:
@@ -184,7 +184,7 @@ def get_app_from(name, pipeline, model, threshold=.5, logger=None):
                 return get_answer_from(identifiers=None, probabilities=None, message=message)
         except Exception as e:
             logger.exception(str(e))
-            message = "Unexpected exception?!"
+            message = "Unexpected exception in parsing?!"
             return get_answer_from(identifiers=None, probabilities=None, message=message)
 
         try:
@@ -203,7 +203,7 @@ def get_app_from(name, pipeline, model, threshold=.5, logger=None):
                 return get_answer_from(identifiers=identifiers, probabilities=None, message=message)
         except Exception as e:
             logger.exception(str(e))
-            message = "Unexpected exception?!"
+            message = "Unexpected exception in inference?!"
             return get_answer_from(identifiers=identifiers, probabilities=None, message=message)
 
         message = "Good answer"

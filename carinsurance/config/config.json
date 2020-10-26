@@ -4,5 +4,5 @@
     "models": "models",
     "results": "results",
     "logs": "logs",
-    "keyname": "kaggle.json"
+    "keyname": null
 }
