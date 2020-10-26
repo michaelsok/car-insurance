@@ -13,4 +13,4 @@ automatic_scaling:
   max_pending_latency: automatic
   max_concurrent_requests: 50
 
-entrypoint: gunicorn -b 0.0.0.0:8080 carinsurance.application.api.wgsi:app
+entrypoint: gunicorn -b 0.0.0.0:8080 carinsurance.application.api.wsgi:app
