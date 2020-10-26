@@ -21,4 +21,4 @@ activate_venv && (
 export PYTHONPATH="$(pwd):$PYTHONPATH"
 
 ## add environment for specific users
-export FORM_GCP_PROJECT="blog-msok-ml-290723"
+export FORM_GCP_PROJECT="$(gcloud config get-value project)"
