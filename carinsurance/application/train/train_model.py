@@ -33,7 +33,7 @@ def train_model(config, logger):
     model.compute_report_using(X_validation, y_validation.values.reshape(-1), threshold=.5)
 
     logger.info('Saving model...')
-    model.save(os.path.join(models_path))
+    model.save(os.path.join(models_path), model_name='model.pkl')
 
     logger.info('Model trained!')
 
