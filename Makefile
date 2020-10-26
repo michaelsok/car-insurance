@@ -9,10 +9,10 @@ init:
 install:
 	pip install -r requirements.txt
 
-install-dev:
+install-dev: install
 	pip install -r requirements.dev.txt
 
-install-doc:
+install-doc: install
 	pip install -r requirements.doc.txt
 
 init-doc: install-doc # should not be used
@@ -33,6 +33,9 @@ preprocessing:
 training:
 	python carinsurance/application/train/train_model.py
 
+examples:
+	python carinsurance/application/examples/create_test_examples.py
+
 local-api:
 	gunicorn -b 0.0.0.0:8080 carinsurance.application.api.wsgi:app
 
@@ -46,4 +49,4 @@ send:
 	curl -H "Content-Type: application/json" -H "Accept-Charset: UTF-8" --request POST ${URL} -d @${FILE}
 
 local-form:
-	gunicorn -b 0.0.0.0:8080 form:server
+	gunicorn -b 0.0.0.0:8090 form:server
