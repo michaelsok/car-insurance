@@ -1,20 +1,25 @@
 '''Exceptions raised during the inference step in the API call'''
 
+
+class MissingValueError(Exception):
+    pass
+
+
 class ReplaceEmptyByNullError(Exception):
-    'An error arised during replace method from data (pd.DataFrame expected)'
+    pass
 
 
 class TransformPipelineError(Exception):
-    'An error arised during transform method from pipeline'
+    pass
 
 
 class PredictionError(Exception):
-    'An error arised during prediction from model'
+    pass
 
 
 class FloatAlterationError(Exception):
-    'An error arised during float function on model prediction'
+    pass
 
 
 class IntegerAlterationError(Exception):
-    'An error arised during int function on probabilities'
+    pass

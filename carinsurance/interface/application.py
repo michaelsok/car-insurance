@@ -12,7 +12,7 @@ from werkzeug.exceptions import BadRequest
 
 from carinsurance.interface.exceptions import (
     ReplaceEmptyByNullError, TransformPipelineError, PredictionError,
-    FloatAlterationError, IntegerAlterationError
+    FloatAlterationError, IntegerAlterationError, MissingValueError
 )
 
 
@@ -55,6 +55,11 @@ def get_predictions(data, pipeline, model, threshold, logger):
         arises when an error occurs during transformation from probabilities to predictions 
 
     '''
+    for c in data.columns:
+        has_missing = data[c].replace({'': np.nan}).isna().any()
+        if has_missing and c not in ('Education', 'Communication', 'Outcome'):
+            raise MissingValueError(f'NaN value was found in {c}')
+
     try:
         data.replace({'': np.nan}, inplace=True)
     except Exception as e:
@@ -157,7 +162,8 @@ def get_app_from(name, pipeline, model, threshold=.5, logger=None):
     app = Flask(name)
     logger = logger or logging.getLogger()
     expected_inference_exceptions = (
-        ReplaceEmptyByNullError, TransformPipelineError, PredictionError, FloatAlterationError, IntegerAlterationError
+        AttributeError, MissingValueError, ReplaceEmptyByNullError, TransformPipelineError,
+        PredictionError, FloatAlterationError, IntegerAlterationError,
     )
 
     @app.route('/api/', methods=['POST'])
