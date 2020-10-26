@@ -121,7 +121,7 @@ class Scaler(Transformer):
 
     Attributes
     ----------
-    name : str
+    name : str, optional, default is "standard"
         scaler name to use for fitting, must be either "standard" or "minmax"
     scaler : sklearn.preprocessing.StandardScaler or MinMaxScaler
         scaler to use for fitting

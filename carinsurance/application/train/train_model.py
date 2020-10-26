@@ -26,7 +26,7 @@ def train_model(config, logger):
     y_validation = pd.read_csv(os.path.join(clean_path, 'y_validation.csv'))
 
     logger.info('Creating model...')
-    model = Model(name='RandomForest', results_path=results_path, logger=logger)
+    model = Model(name='RandomForest', results_path=results_path)
     logger.info('Training model...')
     model.train(X_train, y_train.values.reshape(-1))
     logger.info('Save report on validation...')

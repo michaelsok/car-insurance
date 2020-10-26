@@ -117,6 +117,7 @@ class ModalitiesReplacement(Transformer):
 
         '''
         data = data.copy()
+        data[self.column] = data[self.column].astype(object)
         data[self.column].replace(to_replace=self.replacement, inplace=True)
         return data
 
@@ -144,7 +145,7 @@ class Dummifier(Transformer):
     def fit(self, data, drop_last=True):
         '''Get dummies columns present
 
-        Parameteters
+        Parameters
         ------------
         data : pd.DataFrame
             data to dummify
@@ -307,7 +308,4 @@ class ColumnsSorter(Transformer):
 
         '''
         data = data.copy()
-
-        if y is None:
-            return data[self.columns]
         return data[self.columns]

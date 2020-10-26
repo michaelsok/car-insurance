@@ -4,6 +4,7 @@ import pickle
 from carinsurance.config import CONFIG
 from carinsurance.interface.application import get_app_from
 
+
 MODEL_PATH = os.path.join(CONFIG['project'], CONFIG['models'], 'model.pkl')
 PIPELINE_PATH = os.path.join(CONFIG['project'], CONFIG['models'], 'pipeline.pkl')
 
