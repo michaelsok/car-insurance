@@ -1,0 +1,23 @@
+service: doc
+runtime: python37
+
+instance_class: F1
+
+env_variables:
+  PYTHONPATH: "~/"
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+  min_pending_latency: 30ms
+  max_pending_latency: automatic
+  max_concurrent_requests: 50
+
+handlers:
+- url: /
+  static_files: docs/build/html/index.html
+  upload: docs/build/html/index.html
+
+- url: /(.*)
+  static_files: docs/build/html/\1
+  upload: docs/build/html/(.*)

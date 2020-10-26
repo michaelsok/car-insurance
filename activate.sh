@@ -21,4 +21,4 @@ activate_venv && (
 export PYTHONPATH="$(pwd):$PYTHONPATH"
 
 ## add environment for specific users
-# export CARINSURANCE_ENVIRONMENT="deploy"
+export FORM_GCP_PROJECT="blog-msok-ml-290723"
