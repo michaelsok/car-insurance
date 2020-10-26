@@ -97,7 +97,7 @@ which is basically an alias for the famous `pip install -r requirements.txt`
 
 #### Downloading the dataset
 
-Before training the model you might need to download the data. For this, you first have to register on Kaggle and download a Kaggle json key which must be placed in `~/.kaggle/kaggle.json`.
+Before training the model you might need to download the data. For this, you first have to register on Kaggle and download a Kaggle json key which must be placed in `carinsurance/config/kaggle.json`.
 
 Once done, you may run the followin make command:
 
@@ -218,7 +218,7 @@ In this directory are present the main files to launch for the different routine
 - examples for creating test examples to send to the API (create_test_examples.py)
 - api for running the app (wsgi.py)
 
-NB: for launching [download_datasets.py](/carinsurance/application/train/download_datasets.py) you must register to Kaggle and import the Kaggle key and place it at `~/.kaggle/kaggle.json`
+NB: for launching [download_datasets.py](/carinsurance/application/train/download_datasets.py) you must register to Kaggle and import the Kaggle key and place it at `carinsurance/config/kaggle.json`
 
 ##### config
 
